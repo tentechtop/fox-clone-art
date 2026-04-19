@@ -363,7 +363,7 @@ const Dashboard = () => {
                     </Button>
                   </CardHeader>
                   <CardContent>
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                       {stats.map((stat, idx) => (
                         <Card key={idx} className="border-border">
                           <CardContent className="p-4">
@@ -575,7 +575,7 @@ const Dashboard = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-10 gap-4 mb-6">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-10 gap-4 mb-6">
                   {["请求总量", "成功请求", "失败请求", "平均延迟", "吞吐量", "总 Tokens", "输入 Tokens", "缓存读取", "输出 Tokens", "联网搜索"].map((item, idx) => (
                     <Card key={idx} className="border-border">
                       <CardContent className="p-4">
@@ -662,7 +662,7 @@ const Dashboard = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-6">
                   {[
                     { label: "总费用", value: "$0.00", currency: "USD", color: "text-orange-600" },
                     { label: "输入费用", value: "$0.00", currency: "USD", color: "text-emerald-600" },
@@ -760,17 +760,17 @@ const Dashboard = () => {
 
                 <Card>
                   <CardContent className="p-0">
-                    <div className="border-b p-4 flex items-center text-sm text-muted-foreground gap-8 flex-wrap">
-                      <div className="w-32">时间</div>
-                      <div className="w-48">模型 | API 协议</div>
-                      <div className="w-24">输入</div>
-                      <div className="w-24">输出</div>
-                      <div className="w-24">缓存读取</div>
-                      <div className="w-24">缓存写入</div>
-                      <div className="w-24">搜索</div>
-                      <div className="w-24">总 Tokens</div>
-                      <div className="w-24 flex items-center gap-1">延迟 <ArrowUpRight className="h-3 w-3" /></div>
-                      <div className="w-24 flex items-center gap-1">总费用 <ArrowUpRight className="h-3 w-3" /></div>
+                    <div className="border-b p-4 flex items-center text-sm text-muted-foreground gap-4 flex-wrap">
+                      <div className="w-24 sm:w-32">时间</div>
+                      <div className="w-32 sm:w-48">模型 | API 协议</div>
+                      <div className="w-20 sm:w-24">输入</div>
+                      <div className="w-20 sm:w-24">输出</div>
+                      <div className="w-20 sm:w-24">缓存读取</div>
+                      <div className="w-20 sm:w-24">缓存写入</div>
+                      <div className="w-20 sm:w-24">搜索</div>
+                      <div className="w-20 sm:w-24">总 Tokens</div>
+                      <div className="w-20 sm:w-24 flex items-center gap-1">延迟 <ArrowUpRight className="h-3 w-3" /></div>
+                      <div className="w-20 sm:w-24 flex items-center gap-1">总费用 <ArrowUpRight className="h-3 w-3" /></div>
                     </div>
                     <div className="p-8 flex items-center justify-center text-muted-foreground bg-neutral-50">
                       暂无数据
@@ -788,7 +788,7 @@ const Dashboard = () => {
                   <p className="text-muted-foreground">余额充值、消费明细与支付方式管理</p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-6">
                   <Card className="bg-gradient-to-br from-indigo-50 to-purple-50 border-indigo-100">
                     <CardContent className="p-6">
                       <p className="text-sm text-muted-foreground mb-2">赠送金</p>
@@ -814,7 +814,7 @@ const Dashboard = () => {
                     <CardTitle>快捷充值</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
                       {[
                         { amount: "$10", price: "¥72", bonus: "" },
                         { amount: "$50", price: "¥360", bonus: "+ $3.00" },
@@ -886,7 +886,7 @@ const Dashboard = () => {
                   </CardContent>
                 </Card>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-6">
                   <Card>
                     <CardContent className="p-6 text-center">
                       <p className="text-4xl font-bold">0</p>
