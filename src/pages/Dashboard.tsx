@@ -222,9 +222,6 @@ const Dashboard = () => {
       <main className="flex-1 flex flex-col">
         {/* 顶部导航 */}
         <header className="h-16 border-b border-border bg-white/50 backdrop-blur-sm flex items-center px-6 gap-4">
-          <Button variant="ghost" size="icon">
-            <div className="h-4 w-4 border-l-2 border-t-2 border-foreground" />
-          </Button>
           <div className="flex items-center gap-4">
             <a href="#" className="text-emerald-600 font-medium text-sm hover:underline flex items-center gap-1">
               <span className="text-lg">⚡</span>
