@@ -235,7 +235,6 @@ const Dashboard = () => {
 
                 {/* GPT 活动横幅 */}
                 <Card className="border-emerald-200 bg-gradient-to-r from-emerald-50 to-teal-50 overflow-hidden">
-                  <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-emerald-500 to-teal-600" />
                   <CardHeader className="pb-3">
                     <div className="flex items-center gap-4">
                       <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-neutral-900 to-emerald-700 flex items-center justify-center shadow-lg">
