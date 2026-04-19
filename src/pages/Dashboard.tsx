@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { 
@@ -56,6 +56,15 @@ const Dashboard = () => {
   const [copied, setCopied] = useState(false);
   const [activeTab, setActiveTab] = useState("openai");
   const [currentPage, setCurrentPage] = useState<PageType>("overview");
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // 自动轮动
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % 2);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   const menuItems = [
     { icon: LayoutDashboard, label: "概览", id: "overview" as PageType },
@@ -150,8 +159,17 @@ const Dashboard = () => {
                   <span className="text-lg">🪐</span>
                 </div>
                 <div className="flex-1">
-                  <p className="font-semibold text-sm">GPT 返赠 25%</p>
-                  <p className="text-xs opacity-80">返 $250 • 限时 11 天</p>
+                  {currentSlide === 0 ? (
+                    <>
+                      <p className="font-semibold text-sm">GPT 返赠 25%</p>
+                      <p className="text-xs opacity-80">返 $250 • 限时 11 天</p>
+                    </>
+                  ) : (
+                    <>
+                      <p className="font-semibold text-sm">新用户专享</p>
+                      <p className="text-xs opacity-80">首充 $10 送 $5 • 限时活动</p>
+                    </>
+                  )}
                 </div>
                 <Button 
                   size="icon" 
@@ -161,8 +179,14 @@ const Dashboard = () => {
                 </Button>
               </div>
               <div className="mt-3 flex justify-center gap-1">
-                <div className="w-6 h-1 bg-white rounded-full" />
-                <div className="w-6 h-1 bg-white/30 rounded-full" />
+                <div 
+                  className={`w-6 h-1 rounded-full cursor-pointer transition-all ${currentSlide === 0 ? 'bg-white' : 'bg-white/30'}`}
+                  onClick={() => setCurrentSlide(0)}
+                />
+                <div 
+                  className={`w-6 h-1 rounded-full cursor-pointer transition-all ${currentSlide === 1 ? 'bg-white' : 'bg-white/30'}`}
+                  onClick={() => setCurrentSlide(1)}
+                />
               </div>
             </div>
           </div>
