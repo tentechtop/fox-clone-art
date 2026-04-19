@@ -104,7 +104,7 @@ const Dashboard = () => {
         className={`${sidebarOpen ? 'w-72' : 'w-20'} transition-all duration-300 flex flex-col border-r border-border bg-white`}
       >
         <div className="p-4 flex items-center gap-3">
-          <div className="relative">
+          <div className="relative flex items-center gap-2">
             <button
               onClick={() => setShowTeamDropdown(!showTeamDropdown)}
               className="flex items-center gap-3 group"
@@ -119,6 +119,14 @@ const Dashboard = () => {
                 </div>
               )}
             </button>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+              className="ml-2"
+            >
+              {sidebarOpen ? <ChevronRight className="h-4 w-4 rotate-180" /> : <Menu className="h-4 w-4" />}
+            </Button>
 
             {/* 团队下拉菜单 */}
             {showTeamDropdown && (
@@ -155,14 +163,6 @@ const Dashboard = () => {
               </div>
             )}
           </div>
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="ml-auto"
-          >
-            {sidebarOpen ? <ChevronRight className="h-4 w-4 rotate-180" /> : <Menu className="h-4 w-4" />}
-          </Button>
         </div>
 
         <ScrollArea className="flex-1">
