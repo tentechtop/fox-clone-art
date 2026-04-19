@@ -168,7 +168,7 @@ const Dashboard = () => {
                     ? 'bg-neutral-100 text-foreground font-medium'
                     : 'text-muted-foreground hover:bg-neutral-50 hover:text-foreground'
                 } ${item.highlight && currentPage !== item.id ? 'bg-red-50/50 text-red-700 hover:bg-red-100' : ''}`}
-                style={!sidebarOpen ? { aspectRatio: '1/1', padding: '8px', justifyContent: 'center' } : { justifyContent: 'flex-start' }}
+                style={!sidebarOpen ? { aspectRatio: '1/1', padding: '4px', justifyContent: 'center' } : { justifyContent: 'flex-start' }}
               >
                 <item.icon className={`h-5 w-5 ${item.highlight && currentPage !== item.id ? 'text-red-600' : ''}`} />
                 {sidebarOpen && <span>{item.label}</span>}
