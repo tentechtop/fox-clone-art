@@ -257,18 +257,17 @@ const Dashboard = () => {
         {/* 顶部导航 */}
         <header className="h-16 border-b border-border bg-white/50 backdrop-blur-sm flex items-center px-6 gap-4">
           <div className="flex items-center gap-4">
-            <a href="#" className="text-emerald-600 font-medium text-sm hover:underline flex items-center gap-1">
-              <span className="text-lg">⚡</span>
-              GPT 四月活动
-            </a>
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setSidebarOpen(!sidebarOpen)}
-              className="ml-2"
             >
               {sidebarOpen ? <ChevronRight className="h-4 w-4 rotate-180" /> : <Menu className="h-4 w-4" />}
             </Button>
+            <a href="#" className="text-emerald-600 font-medium text-sm hover:underline flex items-center gap-1">
+              <span className="text-lg">⚡</span>
+              GPT 四月活动
+            </a>
             <a href="#" className="text-orange-600 font-medium text-sm hover:underline flex items-center gap-1">
               <span className="text-lg">🔌</span>
               立即接入
