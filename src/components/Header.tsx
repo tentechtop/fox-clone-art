@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
 
 const links = [
   { label: "模型", href: "#models" },
@@ -11,6 +13,7 @@ const links = [
 
 export const Header = () => {
   const [open, setOpen] = useState(false);
+  const { user, signOut } = useAuth();
 
   return (
     <header
@@ -41,15 +44,29 @@ export const Header = () => {
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
-          <a
-            href="#"
-            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-          >
-            登录
-          </a>
-          <a href="#" className="btn-primary !px-4 !py-2 text-sm">
-            注册
-          </a>
+          {user ? (
+            <>
+              <span className="text-sm text-muted-foreground">{user.email}</span>
+              <button
+                onClick={signOut}
+                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              >
+                退出
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/auth"
+                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              >
+                登录
+              </Link>
+              <Link to="/auth" className="btn-primary !px-4 !py-2 text-sm">
+                注册
+              </Link>
+            </>
+          )}
         </div>
 
         <button
@@ -69,9 +86,15 @@ export const Header = () => {
                 {l.label}
               </a>
             ))}
-            <a href="#" className="btn-primary mt-2 text-sm">
-              注册
-            </a>
+            {user ? (
+              <button onClick={signOut} className="btn-primary mt-2 text-sm">
+                退出 ({user.email})
+              </button>
+            ) : (
+              <Link to="/auth" className="btn-primary mt-2 text-sm">
+                登录 / 注册
+              </Link>
+            )}
           </div>
         </div>
       )}
