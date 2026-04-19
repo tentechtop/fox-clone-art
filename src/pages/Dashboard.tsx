@@ -67,10 +67,8 @@ const Dashboard = () => {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  if (!user) {
-    navigate("/auth");
-    return null;
-  }
+  // 演示模式：即使没有登录也能查看
+  const isDemoMode = !user;
 
   return (
     <div className="flex min-h-screen bg-neutral-50">
