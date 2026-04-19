@@ -26,7 +26,9 @@ import {
   Download,
   Trash2,
   Settings,
-  Zap
+  Zap,
+  Package,
+  Table
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -673,7 +675,7 @@ const Dashboard = () => {
                     </TabsList>
                   </Tabs>
                   <Button variant="outline">
-                    <PackageIcon className="h-4 w-4 mr-2" />
+                    <Package className="h-4 w-4 mr-2" />
                     模型
                   </Button>
                   <Button variant="outline">
@@ -689,7 +691,7 @@ const Dashboard = () => {
                       <Calendar className="h-4 w-4" />
                     </Button>
                     <Button variant="outline" size="icon">
-                      <TableIcon className="h-4 w-4" />
+                      <Table className="h-4 w-4" />
                     </Button>
                   </div>
                 </div>
