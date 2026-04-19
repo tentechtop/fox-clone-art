@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Separator } from "@/components/ui/separator";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { Header } from "@/components/Header";
 
@@ -28,6 +29,30 @@ const Auth = () => {
   useEffect(() => {
     if (!authLoading && user) navigate("/dashboard", { replace: true });
   }, [user, authLoading, navigate]);
+
+  const handleDemoLogin = async () => {
+    setSubmitting(true);
+    // 先尝试注册演示账户，如果已存在则直接登录
+    try {
+      const { error: signUpError } = await supabase.auth.signUp({
+        email: "demo@ofox.ai",
+        password: "demo123",
+      });
+      
+      const { error } = await supabase.auth.signInWithPassword({
+        email: "demo@ofox.ai",
+        password: "demo123",
+      });
+      
+      if (error) throw error;
+      toast({ title: "登录成功", description: "欢迎回到 ofox.ai" });
+      navigate("/dashboard", { replace: true });
+    } catch (err: any) {
+      toast({ title: "登录失败", description: err?.message ?? "请稍后再试", variant: "destructive" });
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -112,18 +137,36 @@ const Auth = () => {
                   />
                 </div>
                 <Button type="submit" className="w-full" disabled={submitting}>
-                  {submitting ? "处理中…" : tab === "signup" ? "创建账户" : "登录"}
-                </Button>
-              </form>
-            </TabsContent>
-          </Tabs>
+                    {submitting ? "处理中…" : tab === "signup" ? "创建账户" : "登录"}
+                  </Button>
+                </form>
+              </TabsContent>
+            </Tabs>
 
-          <p className="mt-6 text-center text-xs text-muted-foreground">
-            返回{" "}
-            <Link to="/" className="font-medium text-foreground hover:underline">
-              首页
-            </Link>
-          </p>
+            {tab === "signin" && (
+              <>
+                <div className="my-6 flex items-center">
+                  <Separator className="flex-1" />
+                  <span className="mx-4 text-xs text-muted-foreground">或</span>
+                  <Separator className="flex-1" />
+                </div>
+                <Button 
+                  type="button" 
+                  className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white"
+                  onClick={handleDemoLogin}
+                  disabled={submitting}
+                >
+                  🚀 一键演示登录
+                </Button>
+              </>
+            )}
+
+            <p className="mt-6 text-center text-xs text-muted-foreground">
+              返回{" "}
+              <Link to="/" className="font-medium text-foreground hover:underline">
+                首页
+              </Link>
+            </p>
         </div>
       </main>
     </div>
