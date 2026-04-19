@@ -26,7 +26,7 @@ const Auth = () => {
   const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
-    if (!authLoading && user) navigate("/", { replace: true });
+    if (!authLoading && user) navigate("/dashboard", { replace: true });
   }, [user, authLoading, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -54,7 +54,7 @@ const Auth = () => {
         });
         if (error) throw error;
         toast({ title: "登录成功", description: "欢迎回到 ofox.ai" });
-        navigate("/", { replace: true });
+          navigate("/dashboard", { replace: true });
       }
     } catch (err: any) {
       const msg = err?.message ?? "请稍后再试";
