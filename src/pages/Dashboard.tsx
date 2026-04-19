@@ -163,11 +163,12 @@ const Dashboard = () => {
               <button
                 key={idx}
                 onClick={() => setCurrentPage(item.id)}
-                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors ${
+                className={`w-full flex items-center justify-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors ${
                   currentPage === item.id
                     ? 'bg-neutral-100 text-foreground font-medium'
                     : 'text-muted-foreground hover:bg-neutral-50 hover:text-foreground'
                 } ${item.highlight && currentPage !== item.id ? 'bg-red-50/50 text-red-700 hover:bg-red-100' : ''}`}
+                style={!sidebarOpen ? { aspectRatio: '1/1', padding: '8px' } : {}}
               >
                 <item.icon className={`h-5 w-5 ${item.highlight && currentPage !== item.id ? 'text-red-600' : ''}`} />
                 {sidebarOpen && <span>{item.label}</span>}
